@@ -10,7 +10,7 @@ for (let i = 0; i < 50; i++) {
 	inventory.push({
 		id: i,
 		name: "Giorgi",
-		price: i,
+		price: i + 1,
 		location: "Cavea Gallery",
 	});
 }
