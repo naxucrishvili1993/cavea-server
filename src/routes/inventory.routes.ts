@@ -23,7 +23,6 @@ router.get("/", async (req: Request, res: Response) => {
 		// Filter result by location
 		filteredArray = filterByLocation(result, String(req.query.location));
 	}
-
 	// If filtered array is not undefined, send to the user
 	filteredArray && res.status(200).json(filteredArray);
 });
