@@ -13,22 +13,19 @@ const router = Router();
 // Get Inventory
 router.get("/", async (req: Request, res: Response) => {
 	InventoryMap(database);
-	const result = await Inventory.findAll().catch((err) =>
-		console.log("Error occured!\n", err),
-	);
-	// Sort result by name
-	if (req.query.name === "1") Array.isArray(result) && sortByName(result);
-	// Sort result by price
-	if (req.query.price === "1") Array.isArray(result) && sortByPrice(result);
-	// Filter result by location
 	let filteredArray: TArray[] | undefined;
+	const result = await Inventory.findAll();
 	if (Array.isArray(result)) {
+		// Sort result by name
+		if (req.query.name === "1") sortByName(result);
+		// Sort result by price
+		if (req.query.price === "1") sortByPrice(result);
+		// Filter result by location
 		filteredArray = filterByLocation(result, String(req.query.location));
 	}
-	// ----------------------------------------
-	filteredArray
-		? res.status(200).json(filteredArray)
-		: res.status(200).json(result);
+
+	// If filtered array is not undefined, send to the user
+	filteredArray && res.status(200).json(filteredArray);
 });
 
 // Delete item by id

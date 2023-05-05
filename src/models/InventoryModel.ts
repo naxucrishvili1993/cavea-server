@@ -8,7 +8,7 @@ export default class Inventory extends Model {
 	public item_price!: number;
 }
 
-export const InventoryMap = (sequelize: Sequelize) => {
+export const InventoryMap = async (sequelize: Sequelize) => {
 	Inventory.init(
 		{
 			item_id: {

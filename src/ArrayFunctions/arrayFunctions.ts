@@ -19,7 +19,6 @@ export const sortByPrice = (arr: TArray[]) => {
 export const filterByLocation = (arr: TArray[], location: string) => {
 	if (location === "All") return arr;
 	if (Array.isArray(arr)) {
-		const newArr = arr.filter((item) => item.item_location == location);
-		return newArr;
+		return arr.filter((item) => item.item_location === location);
 	}
 };
