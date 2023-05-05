@@ -9,7 +9,7 @@ router.post("/", async (req: Request, res: Response) => {
 	const newItem = req.body as Inventory;
 	InventoryMap(database);
 	const result = await Inventory.create({ ...newItem });
-	res.status(201).redirect("/");
+	res.status(201).redirect("https://cavea-project.vercel.app/");
 });
 
 export default router;
