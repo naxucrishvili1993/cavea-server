@@ -33,7 +33,7 @@ router.get(`/:id`, async (req: Request, res: Response) => {
 	const result = await Inventory.destroy({
 		where: { item_id: req.params.id },
 	}).then(() => "Item Deleted Successfully");
-	res.status(200).redirect("http://localhost:3000");
+	res.status(200).redirect("https://cavea-project.vercel.app/inventories");
 });
 
 export default router;
