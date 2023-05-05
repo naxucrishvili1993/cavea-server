@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import { port } from "./config";
 import inventoryRoutes from "./routes/inventory.routes";
+import addProductRoutes from "./routes/addProduct.routes";
 import database from "./database";
 
 const serverPort = port;
@@ -11,10 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/inventories", inventoryRoutes);
-
-app.get("/", (req: Request, res: Response) => {
-	res.redirect("http://localhost:3000/inventories");
-});
+app.use("/add", addProductRoutes);
 
 app.listen(serverPort, async () => {
 	console.log(`Server is started on port ${serverPort}`);
