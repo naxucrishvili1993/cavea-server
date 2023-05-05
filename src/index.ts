@@ -8,8 +8,8 @@ import database from "./database";
 const serverPort = port;
 const app = express();
 
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use("/inventories", inventoryRoutes);
 app.use("/add", addProductRoutes);
