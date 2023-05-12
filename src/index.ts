@@ -4,16 +4,12 @@ import { port } from "./config";
 import inventoryRoutes from "./routes/inventory.routes";
 import addProductRoutes from "./routes/addProduct.routes";
 import database from "./database";
+const cors = require("cors");
 
 const serverPort = port;
 const app = express();
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With");
-  next();
-});
-
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
